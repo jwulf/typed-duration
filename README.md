@@ -1,5 +1,7 @@
 # Typed Duration 
 
+![Node.js CI](https://github.com/jwulf/typed-duration/workflows/Node.js%20CI/badge.svg)
+
 A Zero-dependency typed duration library for JavaScript/TypeScript. Express and convert time durations with type-safety. 
 
 This library uses [Value Object Typing](https://medium.com/@hannespetri/type-safe-value-objects-in-typescript-d1b119c4f5cd) to allow you to express time durations in a type-safe way, and perform conversion between different units.
