@@ -34,7 +34,7 @@ export const Duration = {
   }
 };
 
-export {
+export type {
   Milliseconds,
   Seconds,
   Minutes,
