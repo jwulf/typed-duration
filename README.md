@@ -101,6 +101,28 @@ executePeriodically(doSomething, Duration.seconds.from(20))
 executePeriodically(doSomething, 2500)
 ```
 
+## Logging
+
+You can log times for user information in the format that the user specified them, including units, with `Duration.value.of`. For example:
+
+```TypeScript
+import { Duration, MaybeTimeDuration } from 'typed-duration'
+
+function executePeriodically(fn: () => void, period: MaybeTimeDuration) {
+    console.log(`Executing in ${Duration.value.of(period)}...`)
+    setTimeout(fn, Duration.milliseconds.from(period))
+}
+
+executePeriodically(doSomething, Duration.seconds.from(20))
+// Executing in 20s...
+
+executePeriodically(doSomething, Duration.milliseconds.from(350))
+// Executing in 350ms...
+
+executePeriodically(doSomething, 2500)
+// Executing in 2500...
+```
+
 ## Feature Requests, Bug Reports
 
 See the [GitHub repo](https://github.com/jwulf/typed-duration).
