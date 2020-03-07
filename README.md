@@ -1,6 +1,7 @@
 # Typed Duration 
 
 ![Node.js CI](https://github.com/jwulf/typed-duration/workflows/Node.js%20CI/badge.svg)
+[![npm version](https://badge.fury.io/js/typed-duration.svg)](https://badge.fury.io/js/typed-duration)
 
 A Zero-dependency typed duration library for JavaScript/TypeScript. Express and convert time durations with type-safety. 
 
