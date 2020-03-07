@@ -26,7 +26,7 @@ setTimeout(doSomething, 1000)
 It's pretty clear that these are milliseconds, because you know the API. Typically, developers might do something like:
 
 ```TypeScript
-setTimeout(doSomething, 5 * 60 * 1000) // Every Five Minutes
+setTimeout(doSomething, 5 * 60 * 1000) // In Five Minutes
 ```
 
 With this library, you can do this: 
@@ -53,8 +53,8 @@ Or you could make it take a `TimeDuration` and allow them to pass in whatever th
 ```TypeScript
 import { Duration, TimeDuration } from 'typed-duration'
 
-function executePeriodically(fn: () => void, period: TimeDuration) {
-    setTimeout(fn, Duration.milliseconds.from(period))
+function executeLater(fn: () => void, delay: TimeDuration) {
+    setTimeout(fn, Duration.milliseconds.from(delay))
 }
 ```
 
@@ -64,20 +64,20 @@ Now, consumers of this function can call it like this:
 import { Duration } from 'typed-duration'
 const { milliseconds, seconds, minutes, hours, days } = Duration
 
-// Every 2.5 seconds
-executePeriodically(doSomething, milliseconds.of(2500))
+// After 2.5 seconds
+executeLater(doSomething, milliseconds.of(2500))
 
-// Every 10 seconds
-executePeriodically(doSomething, seconds.of(10))
+// After 10 seconds
+executeLater(doSomething, seconds.of(10))
 
-// Every 15 minutes
-executePeriodically(doSomething, minutes.of(15))
+// After 15 minutes
+executeLater(doSomething, minutes.of(15))
 
-// Every 3 hours
-executePeriodically(doSomething, hours.of(3))
+// After 3 hours
+executeLater(doSomething, hours.of(3))
 
-// Every 6 days
-executePeriodically(doSomething, days.of(6))
+// After 6 days
+executeLater(doSomething, days.of(6))
 ```
 
 **#winning**
@@ -89,16 +89,16 @@ If you have an existing API you want to add this to, you can use the `MaybeTimeD
 ```TypeScript
 import { Duration, MaybeTimeDuration } from 'typed-duration'
 
-function executePeriodically(fn: () => void, period: MaybeTimeDuration) {
+function executeLater(fn: () => void, period: MaybeTimeDuration) {
     setTimeout(fn, Duration.milliseconds.from(period))
 }
 
 // You can pass in a typed duration, and it will convert to a number of milliseconds
-executePeriodically(doSomething, Duration.seconds.from(20))
+executeLater(doSomething, Duration.seconds.from(20))
 
 // a number will be allowed by the MaybeTimeDuration type
 // and the milliseconds.from() call will simply pass it through
-executePeriodically(doSomething, 2500)
+executeLater(doSomething, 2500)
 ```
 
 ## Logging
@@ -108,18 +108,18 @@ You can log times for user information in the format that the user specified the
 ```TypeScript
 import { Duration, MaybeTimeDuration } from 'typed-duration'
 
-function executePeriodically(fn: () => void, period: MaybeTimeDuration) {
-    console.log(`Executing in ${Duration.value.of(period)}...`)
-    setTimeout(fn, Duration.milliseconds.from(period))
+function executeLater(fn: () => void, delay: MaybeTimeDuration) {
+    console.log(`Executing in ${Duration.value.of(delay)}...`)
+    setTimeout(fn, Duration.milliseconds.from(delay))
 }
 
-executePeriodically(doSomething, Duration.seconds.from(20))
+executeLater(doSomething, Duration.seconds.from(20))
 // Executing in 20s...
 
-executePeriodically(doSomething, Duration.milliseconds.from(350))
+executeLater(doSomething, Duration.milliseconds.from(350))
 // Executing in 350ms...
 
-executePeriodically(doSomething, 2500)
+executeLater(doSomething, 2500)
 // Executing in 2500...
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "typed-duration",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Zero-dependency typed duration library for JavaScript",
   "main": "dist/index.js",
   "directories": {
