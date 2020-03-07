@@ -1,0 +1,42 @@
+{
+  "name": "typed-duration",
+  "version": "1.0.0",
+  "description": "Zero-dependency typed duration library for JavaScript",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "dist": "dist"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^3.8.3",
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwulf/typed-duration.git"
+  },
+  "keywords": [
+    "duration",
+    "time",
+    "type-safe",
+    "typescript",
+    "value typed"
+  ],
+  "author": "Josh Wulf <josh@magikcraft.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwulf/typed-duration/issues"
+  },
+  "homepage": "https://github.com/jwulf/typed-duration#readme"
+}
