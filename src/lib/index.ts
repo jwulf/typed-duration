@@ -37,7 +37,7 @@ export type MaybeTimeDuration = TimeDuration | number;
  *
  */
 export const isTypedDuration = (
-  maybeTypedDuration: MaybeTimeDuration
+  maybeTypedDuration: any
 ): maybeTypedDuration is TimeDuration =>
   typeof maybeTypedDuration === "object" &&
   maybeTypedDuration.valueType === "TYPED_DURATION";

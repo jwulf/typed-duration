@@ -9,7 +9,8 @@ import {
   hoursFrom,
   daysOf,
   daysFrom,
-  valueFrom
+  valueFrom,
+  isTypedDuration
 } from "./lib";
 
 export const Duration = {
@@ -33,10 +34,10 @@ export const Duration = {
     of: daysOf,
     from: daysFrom
   },
-  valueFrom
+  valueFrom,
+  isTypedDuration
 };
 
-export {isTypedDuration} from "./lib"
 export type {
   Milliseconds,
   Seconds,
