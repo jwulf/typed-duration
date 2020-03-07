@@ -30,11 +30,23 @@ export interface Days extends TypedDuration {
 }
 export type TimeDuration = Milliseconds | Seconds | Minutes | Hours | Days;
 export type MaybeTimeDuration = TimeDuration | number;
+
+/**
+ * Returns true if the argument is a typed duration object.
+ * Also, acts as a type guard.
+ *
+ */
 export const isTypedDuration = (
-  maybeTypedDuration: any
+  maybeTypedDuration: MaybeTimeDuration
 ): maybeTypedDuration is TimeDuration =>
   typeof maybeTypedDuration === "object" &&
   maybeTypedDuration.valueType === "TYPED_DURATION";
+
+/**
+ * Return the unwrapped number from any typed duration, regardless of its type
+ */
+export const valueFrom = (time: MaybeTimeDuration) =>
+  isTypedDuration(time) ? time.value : time;
 
 const isSeconds = (maybeSeconds: MaybeTimeDuration): maybeSeconds is Seconds =>
   isTypedDuration(maybeSeconds) && maybeSeconds.type === "SECONDS";

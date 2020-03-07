@@ -8,7 +8,8 @@ import {
   hoursOf,
   hoursFrom,
   daysOf,
-  daysFrom
+  daysFrom,
+  valueFrom
 } from "./lib";
 
 export const Duration = {
@@ -31,9 +32,11 @@ export const Duration = {
   days: {
     of: daysOf,
     from: daysFrom
-  }
+  },
+  valueFrom
 };
 
+export {isTypedDuration} from "./lib"
 export type {
   Milliseconds,
   Seconds,
@@ -42,5 +45,5 @@ export type {
   Days,
   TimeDuration,
   MaybeTimeDuration,
-  isTypedDuration
+  
 } from "./lib";
