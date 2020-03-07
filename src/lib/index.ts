@@ -59,7 +59,7 @@ export const valueFrom = (time: MaybeTimeDuration): number =>
  * Return a string representation, with units. For example: `60000ms`
  */
 export const valueOf = (time: MaybeTimeDuration): string =>
-  `${time}${isTypedDuration(time) ? time.unit : ""}`;
+  `${valueFrom(time)}${isTypedDuration(time) ? time.unit : ""}`;
 
 const isSeconds = (maybeSeconds: MaybeTimeDuration): maybeSeconds is Seconds =>
   isTypedDuration(maybeSeconds) && maybeSeconds.type === "SECONDS";

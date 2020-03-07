@@ -35,8 +35,10 @@ export const Duration = {
     of: daysOf,
     from: daysFrom
   },
-  valueFrom,
-  valueOf,
+  value: {
+    from: valueFrom,
+    of: valueOf
+  },
   isTypedDuration
 };
 
