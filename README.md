@@ -7,7 +7,7 @@ A Zero-dependency typed duration library for JavaScript/TypeScript. Express and 
 
 This library uses [Value Object Typing](https://medium.com/@hannespetri/type-safe-value-objects-in-typescript-d1b119c4f5cd) to allow you to express time durations in a type-safe way, and perform conversion between different units.
 
-## Use 
+## Installation 
 
 Install the library to your project:
 
