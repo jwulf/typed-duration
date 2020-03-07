@@ -10,6 +10,7 @@ import {
   daysOf,
   daysFrom,
   valueFrom,
+  valueOf,
   isTypedDuration
 } from "./lib";
 
@@ -35,6 +36,7 @@ export const Duration = {
     from: daysFrom
   },
   valueFrom,
+  valueOf,
   isTypedDuration
 };
 

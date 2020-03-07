@@ -2,31 +2,37 @@ interface TypedDuration {
   type: string;
   valueType: "TYPED_DURATION";
   value: number;
+  unit: string;
 }
 
 export interface Seconds extends TypedDuration {
   type: "SECONDS";
   valueType: "TYPED_DURATION";
+  unit: "s";
 }
 
 export interface Milliseconds extends TypedDuration {
   type: "MILLISECONDS";
   valueType: "TYPED_DURATION";
+  unit: "ms";
 }
 
 export interface Minutes extends TypedDuration {
   type: "MINUTES";
   valueType: "TYPED_DURATION";
+  unit: "m";
 }
 
 export interface Hours extends TypedDuration {
   type: "HOURS";
   valueType: "TYPED_DURATION";
+  unit: "h";
 }
 
 export interface Days extends TypedDuration {
   type: "DAYS";
   valueType: "TYPED_DURATION";
+  unit: "d";
 }
 export type TimeDuration = Milliseconds | Seconds | Minutes | Hours | Days;
 export type MaybeTimeDuration = TimeDuration | number;
@@ -45,8 +51,15 @@ export const isTypedDuration = (
 /**
  * Return the unwrapped number from any typed duration, regardless of its type
  */
-export const valueFrom = (time: MaybeTimeDuration) =>
+export const valueFrom = (time: MaybeTimeDuration): number =>
   isTypedDuration(time) ? time.value : time;
+
+/**
+ *
+ * Return a string representation, with units. For example: `60000ms`
+ */
+export const valueOf = (time: MaybeTimeDuration): string =>
+  `${time}${isTypedDuration(time) ? time.unit : ""}`;
 
 const isSeconds = (maybeSeconds: MaybeTimeDuration): maybeSeconds is Seconds =>
   isTypedDuration(maybeSeconds) && maybeSeconds.type === "SECONDS";
@@ -72,7 +85,8 @@ const isNumber = (maybeNumber: MaybeTimeDuration): maybeNumber is number =>
 const newSeconds = (time: number): Seconds => ({
   type: "SECONDS",
   value: time,
-  valueType: "TYPED_DURATION"
+  valueType: "TYPED_DURATION",
+  unit: "s"
 });
 
 export function secondsOf(time: MaybeTimeDuration): Seconds {
@@ -94,7 +108,8 @@ export function secondsOf(time: MaybeTimeDuration): Seconds {
 const newMilliseconds = (time: number): Milliseconds => ({
   type: "MILLISECONDS",
   value: time,
-  valueType: "TYPED_DURATION"
+  valueType: "TYPED_DURATION",
+  unit: "ms"
 });
 
 export function millisecondsOf(time: MaybeTimeDuration): Milliseconds {
@@ -116,7 +131,8 @@ export function millisecondsOf(time: MaybeTimeDuration): Milliseconds {
 const newMinutes = (time: number): Minutes => ({
   type: "MINUTES",
   value: time,
-  valueType: "TYPED_DURATION"
+  valueType: "TYPED_DURATION",
+  unit: "m"
 });
 
 export function minutesOf(time: MaybeTimeDuration): Minutes {
@@ -138,7 +154,8 @@ export function minutesOf(time: MaybeTimeDuration): Minutes {
 const newHours = (time: number): Hours => ({
   type: "HOURS",
   value: time,
-  valueType: "TYPED_DURATION"
+  valueType: "TYPED_DURATION",
+  unit: "h"
 });
 
 export function hoursOf(time: MaybeTimeDuration): Hours {
@@ -160,7 +177,8 @@ export function hoursOf(time: MaybeTimeDuration): Hours {
 const newDays = (time: number): Days => ({
   type: "DAYS",
   value: time,
-  valueType: "TYPED_DURATION"
+  valueType: "TYPED_DURATION",
+  unit: "d"
 });
 
 export function daysOf(time: MaybeTimeDuration): Days {
