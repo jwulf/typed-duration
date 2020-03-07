@@ -52,10 +52,9 @@ Or you could make it take a `TimeDuration` and allow them to pass in whatever th
 
 ```TypeScript
 import { Duration, TimeDuration } from 'typed-duration'
-const { milliseconds } = Duration
 
 function executePeriodically(fn: () => void, period: TimeDuration) {
-    setTimeout(fn, milliseconds.from(period))
+    setTimeout(fn, Duration.milliseconds.from(period))
 }
 ```
 
@@ -89,14 +88,13 @@ If you have an existing API you want to add this to, you can use the `MaybeTimeD
 
 ```TypeScript
 import { Duration, MaybeTimeDuration } from 'typed-duration'
-const { milliseconds } = Duration
 
 function executePeriodically(fn: () => void, period: MaybeTimeDuration) {
-    setTimeout(fn, milliseconds.from(period))
+    setTimeout(fn, Duration.milliseconds.from(period))
 }
 
 // You can pass in a typed duration, and it will convert to a number of milliseconds
-executePeriodically(doSomething, seconds.from(20))
+executePeriodically(doSomething, Duration.seconds.from(20))
 
 // a number will be allowed by the MaybeTimeDuration type
 // and the milliseconds.from() call will simply pass it through
