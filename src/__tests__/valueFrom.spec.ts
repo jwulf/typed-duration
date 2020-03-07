@@ -22,4 +22,8 @@ describe("value.of", () => {
     const str = Duration.value.of(100);
     expect(str).toBe("100");
   });
+  it("Serializes a number to a string with a default unit", () => {
+    const str = Duration.value.of(10, "h");
+    expect(str).toBe("10h");
+  });
 });

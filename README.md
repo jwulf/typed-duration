@@ -103,13 +103,15 @@ executeLater(doSomething, 2500)
 
 ## Logging
 
-You can log times for user information in the format that the user specified them, including units, with `Duration.value.of`. For example:
+You can log times for user information in the format that the user specified them, including units, with `Duration.value.of`. You can supply an optional default unit to be used for untyped numbers (if you don't, it will just print the number). 
+
+For example:
 
 ```TypeScript
 import { Duration, MaybeTimeDuration } from 'typed-duration'
 
 function executeLater(fn: () => void, delay: MaybeTimeDuration) {
-    console.log(`Executing in ${Duration.value.of(delay)}...`)
+    console.log(`Executing in ${Duration.value.of(delay, "ms")}...`)
     setTimeout(fn, Duration.milliseconds.from(delay))
 }
 
@@ -119,8 +121,11 @@ executeLater(doSomething, Duration.seconds.from(20))
 executeLater(doSomething, Duration.milliseconds.from(350))
 // Executing in 350ms...
 
+executeLater(doSomething, Duration.hours.from(3))
+// Executing in 3h...
+
 executeLater(doSomething, 2500)
-// Executing in 2500...
+// Executing in 2500ms...
 ```
 
 ## Feature Requests, Bug Reports
