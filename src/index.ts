@@ -42,13 +42,41 @@ export const Duration = {
   isTypedDuration
 };
 
-export type {
-  Milliseconds,
-  Seconds,
-  Minutes,
-  Hours,
-  Days,
-  TimeDuration,
-  MaybeTimeDuration,
-  
-} from "./lib";
+interface TypedDuration {
+  type: string;
+  valueType: "TYPED_DURATION";
+  value: number;
+  unit: string;
+}
+
+export interface Seconds extends TypedDuration {
+  type: "SECONDS";
+  valueType: "TYPED_DURATION";
+  unit: "s";
+}
+
+export interface Milliseconds extends TypedDuration {
+  type: "MILLISECONDS";
+  valueType: "TYPED_DURATION";
+  unit: "ms";
+}
+
+export interface Minutes extends TypedDuration {
+  type: "MINUTES";
+  valueType: "TYPED_DURATION";
+  unit: "m";
+}
+
+export interface Hours extends TypedDuration {
+  type: "HOURS";
+  valueType: "TYPED_DURATION";
+  unit: "h";
+}
+
+export interface Days extends TypedDuration {
+  type: "DAYS";
+  valueType: "TYPED_DURATION";
+  unit: "d";
+}
+export type TimeDuration = Milliseconds | Seconds | Minutes | Hours | Days;
+export type MaybeTimeDuration = TimeDuration | number;
