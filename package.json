@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "jest",
-    "prepublishOnly": "jest && tsc"
+    "prepublishOnly": "jest && tsc",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
